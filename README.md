@@ -7,7 +7,7 @@ A weather application that provides current weather information specifically for
 
 ## Table of Contents
 1. [Installation](#installation)
-2. [Depndencies] (#dependencies)
+2. [Dependencies](#dependencies)
 3. [Features](#features)
 4. [Acknowledgments](#acknowledgments)
 
