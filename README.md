@@ -18,7 +18,7 @@ To set up the application on your local machine, follow these steps:
 
 1. **Clone the repository:**
    ```
-   git clone https://github.com/your-username/irish-weather-app.git
+   git clone https://github.com/WhiteNoiz-22/Irish-Weather-Application.git
    ```
 
 2. **Install dependencies:**
