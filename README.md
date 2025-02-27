@@ -1,7 +1,7 @@
 # Irish Weather Application
 
 ## Introduction
-A weather application that provides current weather information specifically for Ireland. Built with **ReactJS**, **Vite**, **Bootstrap 5**, **OpenMeteo API**, **OpenWeatherMap API**, and **Rainfall Radar**. Please note that this app requires an API key to function correctly. If you'd like to request the API key, please email me at [lukelyons1234@gmail.com]. Alternatively, you can sign up for your own API key OpenWeatherMap.
+A weather application that provides current weather information specifically for Ireland. Built with **ReactJS**, **Vite**, **Bootstrap 5**, **OpenMeteo API**, **OpenWeatherMap API**, and **Rainfall Radar**. Please note that this app requires an API key to function correctly. You can sign up for your own API key at OpenWeatherMap for free.
 
 ---
 
