@@ -10,9 +10,14 @@ I was planning to implement this into my application properly by using the weath
 OpenMeteo, but due to time constraints it is only hard coded system. Please feel free to mess around with it and see
 how it works*/
 function WeatherWarningSystem() {
+
+
+  const alertSound = new Audio('./assets/sounds/alert.mp3');
+
+
   return (
     <>
-      <WindWeatherWarning />
+      <WindWeatherWarning alertSoundFromParent={alertSound} />
       <RainWarning />
     </>
   );
@@ -22,8 +27,10 @@ function WeatherWarningSystem() {
 
 function WindWeatherWarning(props) {
   //if you want to test this for yourself you can use this variable and modify it accordingly
-  const sampleWindSpeed = 0;
+  
+  const sampleWindSpeed = 81;
   const sampleWindGust = 0;
+
   if (sampleWindSpeed > 80 || sampleWindGust > 130) {
     return (
       <>
@@ -43,6 +50,10 @@ function WindWeatherWarning(props) {
             <a href="https://www.met.ie/warnings-tomorrow.html">Met Eireann</a>{" "}
             for more information.
           </p>
+          <audio controls autoPlay>
+    <source src="/sounds/alert.mp3" type="audio/mpeg"/>
+    Your browser does not support the audio element.
+  </audio>
         </div>
       </>
     );
