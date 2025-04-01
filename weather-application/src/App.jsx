@@ -42,7 +42,7 @@ function App() {
   async function fetchLocation() {
     //Uses a literal string so that we can use our searchLocation variable within the link
     //Please note that this API can only fetch locations within The Republic of Ireland as indicated by the "IE" after the searchLocation variable is inputted
-    const GeocodeAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation},IE&appid=94cfef69efbff4e07297e961651b3c9e`;
+    const GeocodeAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation},IE&appid=${import.meta.env.VITE_API_KEY}`;
     try {
       setLoading(true);
       //Waits for a response from our API

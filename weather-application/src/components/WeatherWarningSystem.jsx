@@ -12,12 +12,9 @@ how it works*/
 function WeatherWarningSystem() {
 
 
-  const alertSound = new Audio('./assets/sounds/alert.mp3');
-
-
   return (
     <>
-      <WindWeatherWarning alertSoundFromParent={alertSound} />
+      <WindWeatherWarning/>
       <RainWarning />
     </>
   );
@@ -50,10 +47,6 @@ function WindWeatherWarning(props) {
             <a href="https://www.met.ie/warnings-tomorrow.html">Met Eireann</a>{" "}
             for more information.
           </p>
-          <audio controls autoPlay>
-    <source src="/sounds/alert.mp3" type="audio/mpeg"/>
-    Your browser does not support the audio element.
-  </audio>
         </div>
       </>
     );
