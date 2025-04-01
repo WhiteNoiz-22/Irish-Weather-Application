@@ -7,9 +7,8 @@ A weather application that provides current weather information specifically for
 
 ## Table of Contents
 1. [Installation](#installation)
-2. [Dependencies](#dependencies)
-3. [Features](#features)
-4. [Acknowledgments](#acknowledgments)
+2. [Features](#features)
+3. [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -35,10 +34,6 @@ To set up the application on your local machine, follow these steps:
    The application will be available at `http://localhost:3000`.
 
 ---
-
-## Dependencies:
-- **Bootstrap 5**: For styling the user interface.
-- **react-spinners**: For displaying loading indicators.
 
 ## Features
 - **Location-based weather information**: Search for any location within Ireland and retrieve current weather details.
