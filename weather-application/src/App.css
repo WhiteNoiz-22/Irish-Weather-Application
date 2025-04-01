@@ -4,13 +4,16 @@
 }
 
 html, body {
-  color: rgba(255, 255, 255, 0.925) !important;
-  background-color: rgb(49, 49, 49) !important;
+  color: rgba(255, 255, 255, 0.925);
+  background-color: rgb(49, 49, 49);
   text-align: center;
 }
 
 footer {
   margin-top: 10%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: black;
 }
 
 .container-md {

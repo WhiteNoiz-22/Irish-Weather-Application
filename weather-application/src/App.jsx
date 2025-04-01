@@ -8,7 +8,6 @@ import React from "react";
 
 //CSS
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 //Components
 import DisplayWeather from "./components/DisplayWeather.jsx";
