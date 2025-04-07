@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./stylesheets/DisplayWeather.css";
 
 import Loading from "./Loading";
+import ForecastIcons from "./ForecastIcons";
 
 function DisplayWeather(props) {
   //Sets current temperature
@@ -42,14 +43,17 @@ function DisplayWeather(props) {
   //Our API returns only 2 values for day and night which are 0(night) and 1(day), it acts similary to a boolean variable
   const [isDay, setIsDay] = useState(null);
 
+  //Sets our daily forecast
+  const [dailyForecast, setDailyForecast] = useState([]);
+
   useEffect(() => {
     /*ChatGPT Assited code for API call
     Reference: https://youtu.be/YmpWOTT2qdw?si=kIrOpPKq5tfod13g
     There was an issue initially where the API was being called infinitely due to an issue with useEffect.
     This code fixes it by using a const for fetch weather which goes into an async arrow function*/
     const fetchWeather = async () => {
-      const weatherAPI = `https://api.open-meteo.com/v1/forecast?latitude=${props.latFromParent}&longitude=${props.longFromParent}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=precipitation_probability,visibility
-      `;
+      const weatherAPI = `https://api.open-meteo.com/v1/forecast?latitude=${props.latFromParent}&longitude=${props.longFromParent}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,cloud_cover,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=precipitation_probability,visibility&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,rain_sum,wind_speed_10m_max,wind_gusts_10m_max,uv_index_max,weathercode&timezone=auto`;
+
       try {
         setLoading(true);
         const response1 = await fetch(weatherAPI);
@@ -63,20 +67,21 @@ function DisplayWeather(props) {
         setIsDay(json1.current.is_day);
         setRaining(json1.current.rain);
         setRainChance(json1.hourly.precipitation_probability[0]);
+        setDailyForecast(json1.daily);
 
         if (json1.current.rain > 0) {
           setIsRaining(true);
         }
 
-        if (json1.current.precipitation > 0){
-          setWeatherCondition("rain")
-        } else if (json1.current.cloud_cover > 70){
+        if (json1.current.precipitation > 0) {
+          setWeatherCondition("rain");
+        } else if (json1.current.cloud_cover > 70) {
           setWeatherCondition("cloudy");
-        } else if (json1.current.temperature_2m > 10){
+        } else if (json1.current.temperature_2m > 10) {
           setWeatherCondition("warm");
-        } else if (json1.current.temperature_2m < 9){
+        } else if (json1.current.temperature_2m <= 10) {
           setWeatherCondition("cold");
-        } else{
+        } else {
           setWeatherCondition("normal");
         }
 
@@ -96,10 +101,10 @@ function DisplayWeather(props) {
     }
   }, [props.latFromParent, props.longFromParent]);
 
-      //Will change our colors based on the weather condition
-      useEffect(() => {
-        document.body.className = weatherCondition; // Dynamically set body class
-      }, [weatherCondition]);
+  //Will change our colors based on the weather condition
+  useEffect(() => {
+    document.body.className = weatherCondition; // Dynamically set body class
+  }, [weatherCondition]);
 
   if (loading) {
     return <Loading />;
@@ -126,6 +131,20 @@ function DisplayWeather(props) {
           <h3>Wind Speed: {Math.round(windSpeed)}km/h </h3>
           <h3>Wind Gusts: {Math.round(windGusts)}km/h</h3>
         </div>
+        <br/>
+          <div className="container-sm">
+          <h3>7-Day Forecast</h3>
+            {dailyForecast.time?.map((date, index) => (
+              <ForecastIcons
+                key={index}
+                date={date}
+                minTemp={dailyForecast.temperature_2m_min[index]}
+                maxTemp={dailyForecast.temperature_2m_max[index]}
+                rain={dailyForecast.precipitation_sum[index]}
+                weatherCode={dailyForecast.weathercode[index]}
+              />
+            ))}
+          </div>
       </>
     );
   }
