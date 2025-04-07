@@ -5,6 +5,7 @@
 */
 import { useState } from "react";
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 //CSS
 import "./App.css";
@@ -41,7 +42,9 @@ function App() {
   async function fetchLocation() {
     //Uses a literal string so that we can use our searchLocation variable within the link
     //Please note that this API can only fetch locations within The Republic of Ireland as indicated by the "IE" after the searchLocation variable is inputted
-    const GeocodeAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation},IE&appid=${import.meta.env.VITE_API_KEY}`;
+    const GeocodeAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation},IE&appid=${
+      import.meta.env.VITE_API_KEY
+    }`;
     try {
       setLoading(true);
       //Waits for a response from our API
@@ -80,7 +83,9 @@ function App() {
 
   if (loading) {
     return <Loading />;
-  } else if (error) {
+  } 
+  
+  if (error) {
     return (
       <>
         <div className="container-md">
@@ -104,11 +109,17 @@ function App() {
         </div>
       </>
     );
-  } else {
+  }
+
     return (
       <>
         <Header />
-        <WeatherWarningSystem />
+        <Routes>
+          <Route path="/" element={<WeatherWarningSystem />} />
+          <Route path="/weather" element={<DisplayWeather />} />
+          <Route path="/radars" element={<Radars />} />
+          <Route path="/loading" element={<Loading />} />
+        </Routes>
         {/*Bootstrap column made by using the following doccumentation
         https://getbootstrap.com/docs/5.3/layout/columns/ */}
         <div className="container text-center">
@@ -166,7 +177,5 @@ function App() {
       </>
     );
   }
-}
 
 export default App;
-

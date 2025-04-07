@@ -35,6 +35,9 @@ function DisplayWeather(props) {
   //Stores our cloud coverage percentage, initially null
   const [cloudCover, setCloudCover] = useState(null);
 
+  //This state will allow us to check our current weather and change the css based on it
+  const [weatherCondition, setWeatherCondition] = useState("normal");
+
   //Will store the value which checks if it is day or night from our API, initially null
   //Our API returns only 2 values for day and night which are 0(night) and 1(day), it acts similary to a boolean variable
   const [isDay, setIsDay] = useState(null);
@@ -65,6 +68,18 @@ function DisplayWeather(props) {
           setIsRaining(true);
         }
 
+        if (json1.current.precipitation > 0){
+          setWeatherCondition("rain")
+        } else if (json1.current.cloud_cover > 70){
+          setWeatherCondition("cloudy");
+        } else if (json1.current.temperature_2m > 10){
+          setWeatherCondition("warm");
+        } else if (json1.current.temperature_2m < 9){
+          setWeatherCondition("cold");
+        } else{
+          setWeatherCondition("normal");
+        }
+
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -81,14 +96,19 @@ function DisplayWeather(props) {
     }
   }, [props.latFromParent, props.longFromParent]);
 
+      //Will change our colors based on the weather condition
+      useEffect(() => {
+        document.body.className = weatherCondition; // Dynamically set body class
+      }, [weatherCondition]);
+
   if (loading) {
     return <Loading />;
   } else if (error) {
-    return <h1 class="container-md">⚠️ An error has occured {error}</h1>;
+    return <h1 className="container-md">⚠️ An error has occured {error}</h1>;
   } else {
     return (
       <>
-        <div class="container-sm">
+        <div className="container-sm">
           <h2>Current Weather in {props.locationFromParent}</h2>
           <br className="br" />
           <CheckCurrentTemp currentTempFromParent={currentTemp} />

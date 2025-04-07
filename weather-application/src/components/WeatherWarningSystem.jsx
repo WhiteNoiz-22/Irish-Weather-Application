@@ -25,7 +25,7 @@ function WeatherWarningSystem() {
 function WindWeatherWarning(props) {
   //if you want to test this for yourself you can use this variable and modify it accordingly
   
-  const sampleWindSpeed = 81;
+  const sampleWindSpeed = 1;
   const sampleWindGust = 0;
 
   if (sampleWindSpeed > 80 || sampleWindGust > 130) {

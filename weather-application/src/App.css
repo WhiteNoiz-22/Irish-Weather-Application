@@ -4,16 +4,39 @@
 }
 
 html, body {
-  color: rgba(255, 255, 255, 0.925);
-  background-color: rgb(49, 49, 49);
+  background: linear-gradient(to top, #3bd8ff, #1c20ff);
+
+  font-family: 'Segoe UI', sans-serif;
+  color: #212121;
+  margin: 0;
   text-align: center;
+}
+
+body.warm, .navbar.warm, footer.warm {
+  background: linear-gradient(to top, #ffcc80, #ffa726);
+}
+
+body.cold, .navbar.cold, footer.cold {
+  background: linear-gradient(to top, #00a2ec, #38c0ff);
+}
+
+body.cloudy, .navbar.cloudy, footer.cloudy {
+  background: linear-gradient(to top, #8eb3c4, #777777);
+}
+
+body.rain, .navbar.rain, footer.rain {
+  background: linear-gradient(to top, #2c3e50, #4a69bd);
 }
 
 footer {
   margin-top: 10%;
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: black;
+  background-color: #000000;
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 .container-md {
