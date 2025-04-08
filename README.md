@@ -40,6 +40,8 @@ To set up the application on your local machine, follow these steps:
 - **Multilingual search**: The search bar allows users to input location names in either English or Irish.
 - **Rainfall Radar**: Live rainfall radar that updates every 10 minutes, providing real-time weather patterns.
 - **User-friendly interface**: A clean and easy-to-navigate UI built with **Bootstrap 5**, designed for smooth user experience.
+- **7 Day Forecast**: Will display a 7 day forecast for the search location.
+- **Dynamic Background Colours**: Background colours in the current build will change based on the current weather.
 
 ---
 
