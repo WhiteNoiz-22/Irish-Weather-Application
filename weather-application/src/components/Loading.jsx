@@ -1,4 +1,3 @@
-import React from "react";
 import ClipLoader from "react-spinners/BeatLoader";
 
 /*Displays a loading animation when our data is loading

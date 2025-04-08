@@ -103,7 +103,12 @@ function DisplayWeather(props) {
 
   //Will change our colors based on the weather condition
   useEffect(() => {
-    document.body.className = weatherCondition; // Dynamically set body class
+    document.body.className = weatherCondition;
+
+    //Reset the body class when the component unmounts
+    return () => {
+      document.body.className = "";
+    };
   }, [weatherCondition]);
 
   if (loading) {

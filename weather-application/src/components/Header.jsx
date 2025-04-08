@@ -16,6 +16,10 @@ function Header() {
               Home
             </Link>
             {" "}
+            <Link to="hourly" className="navlink">
+            Hourly Forecasts
+            </Link>
+            {" "}
             <Link to="/map" className="navlink">
               Map
             </Link>
