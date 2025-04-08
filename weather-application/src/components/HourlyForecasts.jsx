@@ -5,28 +5,30 @@ import Loading from "./Loading";
 import Error from "./Error";
 import "./stylesheets/HourlyForecast.css";
 
-function HourlyForecasts({
-  initialLat = 53.35014,
-  initialLon = -6.266155,
-  initialLocation = "Dublin",
-}) {
+function HourlyForecasts(){
   //Sets our houly forecasts, initially null
   const [forecastData, setForecastData] = useState(null);
 
   //Sets our loading state, initially false
   const [loading, setLoading] = useState(false);
 
-  //Our coordinates for our location, initially dublin
-  const [coordinates, setCoordinates] = useState({
-    lat: initialLat,
-    lon: initialLon,
-  });
-
-  //Our search location, initially Dublin (Will be implemented in a later build)
-  const [search, setSearch] = useState({ location: initialLocation });
+  //Retrieve location data from localStorage
+  const locationData = JSON.parse(localStorage.getItem("locationData"));
+  console.log("Retrieved Location Data:", locationData);
 
   //Our errors, initially empty string
   const [error, setError] = useState("");
+
+  
+
+  // Check if location data is available
+  if (!locationData || !locationData.latitude || !locationData.longitude || !locationData.location) {
+    return <Error error="Location data is missing or invalid. Please go back and search for a location." />;
+  }
+  
+
+  const { latitude, longitude, location: searchLocation } = locationData;
+
 
   //Fetchs our hourly forecast
   const fetchHourlyForecast = async (latitude, longitude) => {
@@ -70,8 +72,8 @@ function HourlyForecasts({
 
   //Calls our hourly forecast function and requires the latitude and longitude in order to work
   useEffect(() => {
-    fetchHourlyForecast(coordinates.lat, coordinates.lon);
-  }, [coordinates.lat, coordinates.lon]);
+    fetchHourlyForecast(latitude, longitude);
+  }, [latitude, longitude]);
 
   if (loading) {
     return <Loading />;
@@ -84,7 +86,7 @@ function HourlyForecasts({
   return (
     <>
       <div className="Headings">
-        <h1>Your Hourly Forecast for Dublin</h1>
+        <h1>Your Hourly Forecast for {searchLocation}</h1>
         <p>Shows daily forecast data</p>
       </div>
       {forecastData && (

@@ -1,4 +1,4 @@
-
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 //Components
 import DisplayWeather from "./components/DisplayWeather";
@@ -14,6 +14,9 @@ import "./App.css";
 function Home() {
   //Stores an error if it occurs
   const [error, setError] = useState("");
+
+  //Initializes our navigate variable
+  const navigate = useNavigate();
 
   //Our API data for OpenWeatherMap Geocode API
   const [geoData, setGeoData] = useState([]);
@@ -35,7 +38,9 @@ function Home() {
   async function fetchLocation() {
     //Uses a literal string so that we can use our searchLocation variable within the link
     //This API can only fetch locations within The Republic of Ireland (as indicated by "IE")
-    const GeocodeAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation},IE&appid=${import.meta.env.VITE_API_KEY}`;
+    const GeocodeAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${searchLocation},IE&appid=${
+      import.meta.env.VITE_API_KEY
+    }`;
 
     try {
       //Start loading while API request is happening
@@ -56,6 +61,16 @@ function Home() {
 
       //Stores our json API data in geoData
       setGeoData(json);
+
+      localStorage.setItem(
+        "locationData",
+        JSON.stringify({
+          latitude: json[0].lat, // Use json[0].lat instead of locationData.lat
+          longitude: json[0].lon, // Use json[0].lon instead of locationData.lon
+          location: searchLocation,
+        })
+      );
+
     } catch (error) {
       //Catches an error if it occurs
       setError(error.message);
@@ -72,8 +87,8 @@ function Home() {
     if (searchLocation.trim() !== "") {
       fetchLocation();
     }
-  }
 
+  }
   //Stores the inputted search location and handles our search bar functionality
   function handleSearchLocation(e) {
     setSearchLocation(e.target.value);
@@ -81,12 +96,12 @@ function Home() {
 
   //While waiting for data
   if (loading) {
-    return <Loading />
-  };
+    return <Loading />;
+  }
 
   //If there’s an error, show the error UI
   if (error) {
-    return <Error error={error}/>
+    return <Error error={error} />;
   }
 
   return (

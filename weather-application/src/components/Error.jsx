@@ -6,7 +6,7 @@ function Error({error}){
     return (
         <>
           <div className="container-md">
-            <h1>⚠️ An error has occured: {error}.</h1>
+            <h1>⚠️ An error has occured: {error}. </h1>
           </div>
         </>
       );
