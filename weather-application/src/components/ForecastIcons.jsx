@@ -41,7 +41,7 @@ function ForecastIcons({
       {maxTemp !== undefined && <p>Highest Temp: {Math.round(maxTemp)}°C</p>}
       {minTemp !== undefined && <p>Lowest Temp: {Math.round(minTemp)}°C</p>}
       {rain !== undefined && <p>Rain: {rain}{rain < 1 ? "%" : "mm"}</p>}
-      {wind !== undefined && <p>Wind: {wind} km/h</p>}
+      {wind !== undefined && <p>Wind: {Math.round(wind)} km/h</p>}
     </div>
   );
 }

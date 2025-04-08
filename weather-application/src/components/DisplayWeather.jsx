@@ -67,7 +67,19 @@ function DisplayWeather(props) {
         setIsDay(json1.current.is_day);
         setRaining(json1.current.rain);
         setRainChance(json1.hourly.precipitation_probability[0]);
-        setDailyForecast(json1.daily);
+
+        const today = new Date().toISOString().split("T")[0];
+
+        const startIndex = json1.daily.time.findIndex((date) => date >= today);
+        const filteredDailyForecast = {
+          time: json1.daily.time.slice(startIndex),
+          temperature_2m_max: json1.daily.temperature_2m_max.slice(startIndex),
+          temperature_2m_min: json1.daily.temperature_2m_min.slice(startIndex),
+          precipitation_sum: json1.daily.precipitation_sum.slice(startIndex),
+          weathercode: json1.daily.weathercode.slice(startIndex),
+        };
+
+        setDailyForecast(filteredDailyForecast);
 
         if (json1.current.rain > 0) {
           setIsRaining(true);
@@ -136,20 +148,20 @@ function DisplayWeather(props) {
           <h3>Wind Speed: {Math.round(windSpeed)}km/h </h3>
           <h3>Wind Gusts: {Math.round(windGusts)}km/h</h3>
         </div>
-        <br/>
-          <div className="container-sm">
+        <br />
+        <div className="container-sm">
           <h3>7-Day Forecast</h3>
-            {dailyForecast.time?.map((date, index) => (
-              <ForecastIcons
-                key={index}
-                date={date}
-                minTemp={dailyForecast.temperature_2m_min[index]}
-                maxTemp={dailyForecast.temperature_2m_max[index]}
-                rain={dailyForecast.precipitation_sum[index]}
-                weatherCode={dailyForecast.weathercode[index]}
-              />
-            ))}
-          </div>
+          {dailyForecast.time?.map((date, index) => (
+            <ForecastIcons
+              key={index}
+              date={date}
+              minTemp={dailyForecast.temperature_2m_min[index]}
+              maxTemp={dailyForecast.temperature_2m_max[index]}
+              rain={dailyForecast.precipitation_sum[index]}
+              weatherCode={dailyForecast.weathercode[index]}
+            />
+          ))}
+        </div>
       </>
     );
   }

@@ -2,8 +2,7 @@ import React from "react";
 import "./stylesheets/Header.css";
 import { Link } from "react-router-dom";
 
-/*Navigation bar for our website. Due to time constraints this is unfinished and acts 
-as a header for now */
+
 //Reference: https://www.w3schools.com/bootstrap/bootstrap_navbar.asp
 function Header() {
   return (
