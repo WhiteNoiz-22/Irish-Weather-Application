@@ -39,7 +39,8 @@ function HourlyForecasts(){
     }
 
     //Our API
-    const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation_probability,weathercode,wind_speed_10m&timezone=auto`;
+    const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation_probability,precipitation,weathercode,wind_speed_10m&timezone=auto`;
+
 
     try {
         setLoading(true);
@@ -58,9 +59,11 @@ function HourlyForecasts(){
           time: hourlyData.time.slice(startIndex, startIndex + 24),
           temperature_2m: hourlyData.temperature_2m.slice(startIndex, startIndex + 24),
           precipitation_probability: hourlyData.precipitation_probability.slice(startIndex, startIndex + 24),
+          precipitation: hourlyData.precipitation.slice(startIndex, startIndex + 24),
           weathercode: hourlyData.weathercode.slice(startIndex, startIndex + 24),
           wind_speed_10m: hourlyData.wind_speed_10m.slice(startIndex, startIndex + 24),
         };
+        
       
         setForecastData(filteredData);
         setLoading(false);
@@ -97,9 +100,11 @@ function HourlyForecasts(){
             time={time}
             temperature={forecastData.temperature_2m[index]}
             rain={forecastData.precipitation_probability[index]}
+            precipitationProbability={forecastData.precipitation_probability[index]}
+            precipitationAmount={forecastData.precipitation[index]}
             weatherCode={forecastData.weathercode[index]}
             wind={forecastData.wind_speed_10m[index]}
-            />
+          />
           ))}
         </div>
       )}

@@ -7,6 +7,9 @@ function ForecastIcons({
   rain,
   weatherCode,
   wind,
+  isHourly = false,
+  precipitationProbability,
+  precipitationAmount,
 }) {
   const weatherIcons = {
     0: "☀️",
@@ -34,15 +37,25 @@ function ForecastIcons({
 
   return (
     <div className="forecast-icon">
-      <h4>{formattedTime}</h4>
-      <p>{rain > 0 ? "🌧️" : weatherIcons[weatherCode] || "❓"}</p>
+  <h4>{formattedTime}</h4>
+  <p>{rain > 0 ? "🌧️" : weatherIcons[weatherCode] || "❓"}</p>
 
-      {temperature !== undefined && <p>Temperature: {Math.round(temperature)}°C</p>}
-      {maxTemp !== undefined && <p>Highest Temp: {Math.round(maxTemp)}°C</p>}
-      {minTemp !== undefined && <p>Lowest Temp: {Math.round(minTemp)}°C</p>}
-      {rain !== undefined && <p>Rain: {rain}{rain < 1 ? "%" : "mm"}</p>}
-      {wind !== undefined && <p>Wind: {Math.round(wind)} km/h</p>}
-    </div>
+  {temperature !== undefined && (
+    <p>Temperature: {Math.round(temperature)}°C</p>
+  )}
+  {maxTemp !== undefined && <p>Highest Temp: {Math.round(maxTemp)}°C</p>}
+  {minTemp !== undefined && <p>Lowest Temp: {Math.round(minTemp)}°C</p>}
+  {precipitationAmount !== undefined && precipitationAmount > 0 ? (
+  <p>Rain: {precipitationAmount} mm</p>
+) : (
+  precipitationProbability !== undefined && (
+    <p>Chance of Rain: {precipitationProbability}%</p>
+  )
+)}
+
+
+  {wind !== undefined && <p>Wind: {Math.round(wind)} km/h</p>}
+</div>
   );
 }
 

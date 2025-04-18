@@ -69,7 +69,6 @@ function DisplayWeather(props) {
         setRainChance(json1.hourly.precipitation_probability[0]);
 
         const today = new Date().toISOString().split("T")[0];
-
         const startIndex = json1.daily.time.findIndex((date) => date >= today);
         const filteredDailyForecast = {
           time: json1.daily.time.slice(startIndex),
@@ -135,18 +134,18 @@ function DisplayWeather(props) {
           <br className="br" />
           <CheckCurrentTemp currentTempFromParent={currentTemp} />
           <br />
-          <h3>
-            {isRaining ? <h3>Raining outside🌧️</h3> : null} Precipitation:{" "}
-            {raining}mm{" "}
-          </h3>
-          <h3>Chance of Rain {rainChance}% (Updated Hourly)</h3>
+ 
+            {isRaining ? <h4>Raining outside🌧️</h4> : null} <h4>Precipitation:{" "}
+            {raining}mm{" "}</h4>
+
+          <h4>Chance of Rain {rainChance}% (Updated Hourly)</h4>
           <CheckCloudCover
             cloudCoverFromParent={cloudCover}
             isDayFromParent={isDay}
           />
           <br />
-          <h3>Wind Speed: {Math.round(windSpeed)}km/h </h3>
-          <h3>Wind Gusts: {Math.round(windGusts)}km/h</h3>
+          <h4>Wind Speed: {Math.round(windSpeed)}km/h </h4>
+          <h4>Wind Gusts: {Math.round(windGusts)}km/h</h4>
         </div>
         <br />
         <div className="container-sm">
@@ -204,58 +203,58 @@ function CheckCurrentTemp(props) {
   if (props.currentTempFromParent > 30) {
     return (
       <>
-        <h3>
+        <h4>
           Current Temperature: {Math.round(props.currentTempFromParent)}°C
-        </h3>
-        <h3>Very hot outside ☀️. Please avoid staying out too long ⚠️</h3>
+        </h4>
+        <h4>Very hot outside ☀️. Please avoid staying out too long ⚠️</h4>
       </>
     );
     //Checks if currentTemp is greater than 20
   } else if (props.currentTempFromParent > 20) {
     return (
       <>
-        <h3>
+        <h4>
           Current Temperature: {Math.round(props.currentTempFromParent)}°C
-        </h3>
-        <h3>Warm outside ☀️</h3>;
+        </h4>
+        <h4>Warm outside ☀️</h4>;
       </>
     );
     //Checks if current temp is greater than 10
   } else if (props.currentTempFromParent > 10) {
     return (
       <>
-        <h3>
+        <h4>
           Current Temperature: {Math.round(props.currentTempFromParent)}°C
-        </h3>
-        <h3>Mild outside ☀️</h3>
+        </h4>
+        <h4>Mild outside ☀️</h4>
       </>
     );
     //Checks if current temp is greater than 0
   } else if (props.currentTempFromParent > 0) {
     return (
       <>
-        <h3>
+        <h4>
           Current Temperature: {Math.round(props.currentTempFromParent)}°C
-        </h3>
-        <h3>Cold outside ❄️</h3>
+        </h4>
+        <h4>Cold outside ❄️</h4>
       </>
     );
     //Checks if current temp is greater than -10
   } else if (props.currentTempFromParent > -10) {
     return (
       <>
-        <h3>
+        <h4>
           Current Temperature: {Math.round(props.currentTempFromParent)}°C
-        </h3>
-        <h3>Freezing outside ❄️. Watch out for ice if travelling ⚠️</h3>
+        </h4>
+        <h4>Freezing outside ❄️. Watch out for ice if travelling ⚠️</h4>
       </>
     );
     //If data is unavailable for any reason, this will return. For example: our API calls may have ran out and our data won't display
   } else {
     return (
-      <h3>
+      <h4>
         Unable to display Current Temperature Data. Please Try again soon.
-      </h3>
+      </h4>
     );
   }
 }
