@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Home from "./Home";
 import Error from "./components/Error";
 import HourlyForecasts from "./components/HourlyForecasts";
@@ -8,7 +8,7 @@ import HourlyForecasts from "./components/HourlyForecasts";
 function App() {
   return (
     <>
-      <Header />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error />} />

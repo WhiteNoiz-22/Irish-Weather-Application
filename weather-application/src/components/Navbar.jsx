@@ -1,10 +1,10 @@
 import React from "react";
-import "./stylesheets/Header.css";
+import "./stylesheets/Navbar.css";
 import { Link } from "react-router-dom";
 
 
 //Reference: https://www.w3schools.com/bootstrap/bootstrap_navbar.asp
-function Header() {
+function Navbar() {
   return (
     <>
       <nav className="navbar">
@@ -29,4 +29,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navbar;

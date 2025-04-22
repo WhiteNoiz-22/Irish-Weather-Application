@@ -4,7 +4,7 @@
 }
 
 html, body {
-  background: linear-gradient(to top, #3bd8ff, #1c20ff);
+  background: linear-gradient(to top, #3bd8ff, #3a3eff);
 
   font-family: 'Segoe UI', sans-serif;
   color: #212121;
@@ -30,7 +30,7 @@ body.rain, .navbar.rain, footer.rain {
 
 
 .form-control {
-  color: white;
+  color: rgb(255, 255, 255);
   border-color: rgb(0, 0, 0);
   background-color: rgb(32, 32, 32);
 }
@@ -43,9 +43,10 @@ footer {
   margin-top: 10%;
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #000000;
+  background-color: rgb(29, 29, 29);
   color: white;
   padding: 1rem 2rem;
   text-align: center;
   font-size: 0.9rem;
+  border-top-color: rgb(128, 128, 128);
 }
