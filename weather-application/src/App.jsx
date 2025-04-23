@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./Home";
 import Error from "./components/Error";
 import HourlyForecasts from "./components/HourlyForecasts";
+import Map from "./components/Map";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error />} />
         <Route path="/hourly" element={<HourlyForecasts/>} />
+        <Route path="/map" element={<Map/>}/>
       </Routes>
       <footer>
         <p>

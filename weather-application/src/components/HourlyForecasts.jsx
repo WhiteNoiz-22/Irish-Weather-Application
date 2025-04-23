@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 import "./stylesheets/HourlyForecast.css";
 
+
 function HourlyForecasts(){
   //Sets our houly forecasts, initially null
   const [forecastData, setForecastData] = useState(null);
@@ -86,30 +87,37 @@ function HourlyForecasts(){
     return <Error error={error} />;
   }
 
-  return (
-    <>
-      <div className="Headings">
-        <h1>Your Hourly Forecast for {searchLocation}</h1>
-        <p>Shows daily forecast data</p>
-      </div>
-      {forecastData && (
+  
+    return (
+          
+      <div className="container">
         <div className="container-sm">
-          {forecastData.time.slice(0, 24).map((time, index) => (
-            <ForecastIcons
-            key={index}
-            time={time}
-            temperature={forecastData.temperature_2m[index]}
-            rain={forecastData.precipitation_probability[index]}
-            precipitationProbability={forecastData.precipitation_probability[index]}
-            precipitationAmount={forecastData.precipitation[index]}
-            weatherCode={forecastData.weathercode[index]}
-            wind={forecastData.wind_speed_10m[index]}
-          />
-          ))}
+          <h1>Your Hourly Forecast for {searchLocation}</h1>
+          <p>Shows hourly forecast data</p>
         </div>
-      )}
-    </>
-  );
-}
 
+        <div className="container-xl">
+        <div className="row">
+          {forecastData &&
+            forecastData.time.map((time, index) => (
+              <div key={index} className="col-6 col-md-4 col-lg-2 mb-3">
+                <div className="forecast-item rounded p-2 text-center h-100">
+                  <ForecastIcons
+                    time={time}
+                    temperature={forecastData.temperature_2m[index]}
+                    rain={forecastData.precipitation_probability[index]}
+                    precipitationProbability={forecastData.precipitation_probability[index]}
+                    precipitationAmount={forecastData.precipitation[index]}
+                    weatherCode={forecastData.weathercode[index]}
+                    wind={forecastData.wind_speed_10m[index]}
+                  />
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+      </div>
+    );
+
+}
 export default HourlyForecasts;
