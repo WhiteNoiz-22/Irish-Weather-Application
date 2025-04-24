@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 //Components
 import DisplayWeather from "./components/DisplayWeather";
@@ -14,9 +13,6 @@ import "./App.css";
 function Home() {
   //Stores an error if it occurs
   const [error, setError] = useState("");
-
-  //Initializes our navigate variable
-  const navigate = useNavigate();
 
   //Our API data for OpenWeatherMap Geocode API
   const [geoData, setGeoData] = useState([]);

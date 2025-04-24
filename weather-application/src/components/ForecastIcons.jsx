@@ -1,3 +1,4 @@
+//Will display forecast information and icons for Hourly Weather
 function ForecastIcons({
   date,
   time,
@@ -7,10 +8,10 @@ function ForecastIcons({
   rain,
   weatherCode,
   wind,
-  isHourly = false,
   precipitationProbability,
   precipitationAmount,
 }) {
+  //Our weather icons
   const weatherIcons = {
     0: "☀️",
     1: "🌤️",
@@ -35,8 +36,9 @@ function ForecastIcons({
       })
     : "Unknown time";
 
+  //Returns our hourly weather infromation
   return (
-    <div className="forecast-icon">
+  <div className="forecast-icon">
   <h4>{formattedTime}</h4>
   <p>{rain > 0 ? "🌧️" : weatherIcons[weatherCode] || "❓"}</p>
 

@@ -5,7 +5,7 @@ import Error from "./components/Error";
 import HourlyForecasts from "./components/HourlyForecasts";
 import Map from "./components/Map";
 
-
+//Sets up our react router and renders our header and footer on every page
 function App() {
   return (
     <>

@@ -13,23 +13,34 @@ function HourlyForecasts(){
   //Sets our loading state, initially false
   const [loading, setLoading] = useState(false);
 
-  //Retrieve location data from localStorage
-  const locationData = JSON.parse(localStorage.getItem("locationData"));
-  console.log("Retrieved Location Data:", locationData);
-
+  //Our default location, Dublin in this case
+  const defaultLatitude = 53.35014;
+  const defaultLongitude = -6.266155;
+  const defaultLocation = "Dublin";
+  
   //Our errors, initially empty string
   const [error, setError] = useState("");
 
-  
+  //Retrieve location data from localStorage
+  let locationData = JSON.parse(localStorage.getItem("locationData"));
+  console.log("Retrieved Location Data:", locationData);
 
-  // Check if location data is available
+  //If the location data is empty we set it to the default location and store it in our local storage
   if (!locationData || !locationData.latitude || !locationData.longitude || !locationData.location) {
-    return <Error error="Location data is missing or invalid. Please go back and search for a location." />;
+    locationData = {
+      latitude: defaultLatitude,
+      longitude: defaultLongitude,
+      location: defaultLocation,
+    };
+    localStorage.setItem("locationData", JSON.stringify(locationData));
+    console.log("Default location saved to localStorage:", locationData);
   }
+
+  //Holds our location data from the inputed location
+  const latitude = locationData.latitude;
+  const longitude = locationData.longitude;
+  const searchLocation = locationData.location;
   
-
-  const { latitude, longitude, location: searchLocation } = locationData;
-
 
   //Fetchs our hourly forecast
   const fetchHourlyForecast = async (latitude, longitude) => {
@@ -42,7 +53,7 @@ function HourlyForecasts(){
     //Our API
     const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation_probability,precipitation,weathercode,wind_speed_10m&timezone=auto`;
 
-
+    //Tries to get a response from the API
     try {
         setLoading(true);
         const response = await axios.get(apiUrl);
@@ -68,6 +79,7 @@ function HourlyForecasts(){
       
         setForecastData(filteredData);
         setLoading(false);
+        //Catches an error if it occurs and stops loading
       } catch (err) {
         setError(err.message);
         setLoading(false);
@@ -79,16 +91,18 @@ function HourlyForecasts(){
     fetchHourlyForecast(latitude, longitude);
   }, [latitude, longitude]);
 
+  //Loading screen if loading true
   if (loading) {
     return <Loading />;
   }
 
+  //Error screen, if it occurs
   if (error) {
     return <Error error={error} />;
   }
 
-  
-    return (
+  //Returns our hourly weather information and calls our forecastIcon's component to format the information
+  return (
           
       <div className="container">
         <div className="container-sm">

@@ -47,8 +47,7 @@ function DisplayWeather(props) {
   const [dailyForecast, setDailyForecast] = useState([]);
 
   useEffect(() => {
-    /*ChatGPT Assited code for API call
-    Reference: https://youtu.be/YmpWOTT2qdw?si=kIrOpPKq5tfod13g
+    /*Reference: https://youtu.be/YmpWOTT2qdw?si=kIrOpPKq5tfod13g
     There was an issue initially where the API was being called infinitely due to an issue with useEffect.
     This code fixes it by using a const for fetch weather which goes into an async arrow function*/
     const fetchWeather = async () => {
@@ -124,9 +123,12 @@ function DisplayWeather(props) {
 
   if (loading) {
     return <Loading />;
-  } else if (error) {
+  } 
+  
+  if (error) {
     return <h1 className="container-md">⚠️ An error has occured {error}</h1>;
-  } else {
+  }
+  
     return (
       <>
         <div className="container-sm">
@@ -163,7 +165,6 @@ function DisplayWeather(props) {
         </div>
       </>
     );
-  }
 }
 
 //Checks if there is cloud coverage in the location
