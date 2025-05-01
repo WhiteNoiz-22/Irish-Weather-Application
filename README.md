@@ -43,7 +43,7 @@ To set up the application on your local machine, follow these steps:
 - **7 Day Forecast**: Will display a 7 day forecast for the search location.
 - **Dynamic Background Colours**: Background colours in the current build will change based on the current weather.
 - **Hourly Forecast**: Will display an hourly forecast for the next 24 hours within the entered location. Default location is Dublin.
-- **Interactive Weather Map**: The weather map will display hourly weather information for 8 locations across Irelnad.
+- **Interactive Weather Map**: The weather map will display hourly weather information for 8 locations across Ireland.
 
 ---
 
