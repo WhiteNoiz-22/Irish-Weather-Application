@@ -2,21 +2,18 @@
   color: whitesmoke;
 }
 
-
-
 .forecast-item {
   text-align: center;
   padding: 10px;
-  background-color: rgb(243, 243, 243);
+  background-color: rgba(221, 210, 210, 0.144);
   border-radius: 10px;
   margin: 10px;
-  color: rgba(0, 0, 0, 0.781);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(29, 29, 29);
+  border: 2px none;
 }
 
 .container-sm{
-    background-color: rgb(243, 243, 243);
+    background-color: rgba(243, 243, 243, 0.212);
     border-radius: 1rem;
     padding: 1.5rem;
     margin: 2rem auto;
@@ -26,7 +23,7 @@
 }
 
 .container-xl{
-    background-color: rgba(204, 230, 238, 0.973);
+    background-color: rgba(177, 191, 196, 0.404);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border: 1px none;
     border-radius: 1rem;

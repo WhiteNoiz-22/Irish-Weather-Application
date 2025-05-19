@@ -4,10 +4,10 @@
 }
 
 html, body {
-  background: linear-gradient(to top, #3bd8ff, #3a3eff);
+  background: linear-gradient(to top, #6be1ff, #5f53ff);
 
   font-family: 'Segoe UI', sans-serif;
-  color: #212121;
+  color: #000000;
   margin: 0;
   text-align: center;
 }
@@ -50,7 +50,6 @@ footer {
   font-size: 0.9rem;
   border-top-color: rgb(128, 128, 128);
   bottom: 0;
-  position: static;
-  left: 0;
-  right: 0;
+  position: relative;
+  width: 100%;
 }

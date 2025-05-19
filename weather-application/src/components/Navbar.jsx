@@ -22,6 +22,10 @@ function Navbar() {
             <Link to="/map" className="navlink">
               Map
             </Link>
+            {" "}
+            <Link to="/weatherwarnings" className="navlink">
+            Warnings
+            </Link>
           </div>
         </div>
       </nav>
