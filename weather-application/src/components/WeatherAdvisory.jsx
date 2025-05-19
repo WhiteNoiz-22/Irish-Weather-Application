@@ -51,7 +51,7 @@ const WeatherAdvisory = () => {
 };
 
 const getWarnings = async () => {
-  const apiUrl = "/met/Open_Data/json/warning_IRELAND.json"; // goes through Vite proxy
+  const apiUrl = "/met/Open_Data/json/warning_IRELAND.json";
   const response = await axios.get(apiUrl);
   return response.data;
 };
