@@ -5,7 +5,6 @@ import Error from "./components/Error";
 import HourlyForecasts from "./components/HourlyForecasts";
 import Map from "./components/Map";
 import WeatherWarnings from "./components/WeatherWarnings";
-import Test from "./components/test";
 
 //Sets up our react router and renders our header and footer on every page
 function App() {
@@ -18,7 +17,6 @@ function App() {
         <Route path="/hourly" element={<HourlyForecasts />} />
         <Route path="/map" element={<Map />} />
         <Route path="WeatherWarnings" element={<WeatherWarnings />} />
-        <Route path="testing" element={<Test/>}/>
       </Routes>
       <footer>
         <p>
@@ -35,7 +33,7 @@ function App() {
           <a href="https://open-meteo.com/">OpenMeteo</a> and{" "}
           <a href="https://openweathermap.org/">OpenWeatherMap</a>. Radar data
           is provided by <a href="https://www.rainviewer.com/">RainViewer</a>.
-          Weather Warnings and Advisories data was provide by{" "}
+          Weather Warnings, Advisories and other weather data was provided by{" "}
           <a href="https://www.met.ie/">Met Eireann</a>.
         </p>
       </footer>

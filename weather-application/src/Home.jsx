@@ -66,7 +66,6 @@ function Home() {
           location: searchLocation,
         })
       );
-
     } catch (error) {
       //Catches an error if it occurs
       setError(error.message);
@@ -83,7 +82,6 @@ function Home() {
     if (searchLocation.trim() !== "") {
       fetchLocation();
     }
-
   }
   //Stores the inputted search location and handles our search bar functionality
   function handleSearchLocation(e) {
@@ -139,6 +137,14 @@ function Home() {
       )}
 
       <br />
+      <iframe
+        style={{ border: "0px #ccc solid" }}
+        src="https://www.met.ie/widgets/observations/"
+        name="MEWarning"
+        width="225"
+        height="200"
+        title="weather station observations widget"
+      ></iframe>
       <Radars />
     </>
   );
