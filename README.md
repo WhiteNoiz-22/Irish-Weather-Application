@@ -44,6 +44,10 @@ To set up the application on your local machine, follow these steps:
 - **Dynamic Background Colours**: Background colours in the current build will change based on the current weather.
 - **Hourly Forecast**: Will display an hourly forecast for the next 24 hours within the entered location. Default location is Dublin.
 - **Interactive Weather Map**: The weather map will display hourly weather information for 8 locations across Ireland.
+- **Dynamic Background Colours**: Background colours in the current build will change based on the current weather.
+- **Hourly Forecast**: Will display an hourly forecast for the next 24 hours within the entered location. Default location is Dublin.
+- **Interactive Weather Map**: The weather map will display hourly weather information for 8 locations across Ireland.
+- **Weather Warning Pages**: Shows current weather warnings using Met Eireanns API.
 
 ---
 
@@ -51,5 +55,7 @@ To set up the application on your local machine, follow these steps:
 - **OpenMeteo API**: For providing free weather data.
 - **OpenWeatherMap API**: For reliable weather forecasts.
 - **Rainfall Radar**: For offering radar data and real-time weather patterns.
+- **Met Eireann**: For weather warnings, advisories and other weather information.
+- **React Leaflet**: For the map.
 
 Thank you to all these services for making this app possible!
